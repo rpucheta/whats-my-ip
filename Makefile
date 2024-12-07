@@ -1,4 +1,5 @@
 # Variables
+APP_NAME=WhatsMyIp
 BINARY_NAME := whatsmyip
 TARGET_DIR := target/release
 SRC := src
@@ -9,18 +10,18 @@ all: build
 
 # Build the release binary
 .PHONY: build
-build:
+build: ## Build the release binary
 	@cargo build --release
 	@echo "Build complete: $(TARGET_DIR)/$(BINARY_NAME)"
 
 # Run the release binary
 .PHONY: run
-run: build
+run: build ## Run the release binary
 	$(TARGET_DIR)/$(BINARY_NAME)
 
 # Clean build artifacts
 .PHONY: clean
-clean:
+clean: ## Clean build artifacts
 	@cargo clean
 	@rm -rf lcov.info
 	@rm -rf tarpaulin-report.html
@@ -28,35 +29,29 @@ clean:
 
 # Test the project
 .PHONY: test
-test:
+test: ## Run tests
 	@cargo test
 	@echo "Tests complete."
 
 # Run coverage using cargo-tarpaulin
-tarpaulin:
+tarpaulin: ## Run coverage using cargo-tarpaulin
 	@cargo tarpaulin --out Html --out Lcov
 
 # Format the code
 .PHONY: format
-format:
+format: ## Format the code
 	@cargo fmt
 	@echo "Code formatted."
 
 # Lint the project
 .PHONY: lint
-lint:
+lint: ## Lint the code
 	@cargo clippy -- -D warnings
 	@echo "Lint complete."
 
 # Help menu
 .PHONY: help
-help:
+help: ## Show this help message
+	@printf "\n\033[1m%s\033[0m\n" "$(APP_NAME)"
 	@echo "Usage:"
-	@echo "  make build    - Build the release binary"
-	@echo "  make run      - Run the release binary"
-	@echo "  make clean    - Clean build artifacts"
-	@echo "  make test     - Run tests"
-	@echo "  make tarpaulin - Run coverage using cargo-tarpaulin"
-	@echo "  make format   - Format the code"
-	@echo "  make lint     - Lint the code"
-	@echo "  make help     - Show this help message"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
