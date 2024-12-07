@@ -4,9 +4,19 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Raúl Pucheta Barranco <raul@pucheta.es>"]
 
+[[bin]]
+name = "whatsmyip"
+path = "src/main.rs"
+
 [dependencies]
 reqwest = "0.12.9"
 tokio = { version = "1.42.0", features = ["full"] }
 local-ip-address = "0.6.3"
 copypasta = "0.10.1"
+predicates = "3.1.2"
+
+[dev-dependencies]
+mockito = "1.6.1"
+httpmock = "0.7.0"
+assert_cmd = "2.0.16"
 

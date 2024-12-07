@@ -1,0 +1,1 @@
+pub const IP_API_URL: &str = "https://api.ipify.org?format=text";
