@@ -1,5 +1,6 @@
 # WhatsMyIp
-A simple command-line tool written in Rust to retrieve and display your external and private IP addresses. This project is part of my learning journey in Rust and provides a practical utility for terminal users on macOS, Linux, or Windows.**
+A simple command-line tool written in Rust to retrieve and display your external and private IP addresses. This project is part of my learning journey in Rust and provides a practical utility for terminal users on macOS, Linux, or Windows.
+This is just an extended project I created as part of my learning process with the Rust programming language. Hope it helps someone else too.
 
 ## Version
 v1.0.0
